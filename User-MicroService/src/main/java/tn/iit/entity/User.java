@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Impressions")
+@Table(name = "Users")
 public class User {
 
 	@Id
@@ -16,12 +16,15 @@ public class User {
 	@Column(name = "id")
 	private Long id;
 
-	@Column(name = "street")
-	private String street;
+	@Column(name = "FullName")
+	private String FullName;
 
-	@Column(name = "city")
-	private String city;
+	@Column(name = "Mail")
+	private String Mail;
 	
-	@Column(name = "Id_Ens")
-	private String Id_Ens;
+	@Column(name = "Password")
+	private String Password;
+	
+	@Column(name = "Role")
+	private String Role;
 }
