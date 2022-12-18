@@ -1,5 +1,7 @@
 package tn.iit.entity;
 
+
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,16 +18,25 @@ public class Impression {
 	@Column(name = "id")
 	private Long id;
 
-	@Column(name = "FullName")
-	private String FullName;
+	@Column(name = "NbrCopie")
+	private int NbrCopie;
 
-	@Column(name = "Mail")
-	private String Mail;
+	@Column(name = "Statuts")
+	private String Status;
 	
-	@Column(name = "Password")
-	private String Password;
+	@Column(name = "Date")
+	private String Date;
 	
-	@Column(name = "Role")
-	private String Role;
+	@Column(name = "File")
+	private String File;
 	
+	@Column(name = "Id_Ens")
+	private Long Id_Ens;
+	
+	
+	@Column(name = "Id_Group")
+	private Long Id_Group;
+	
+	@Column(name = "Id_Subject")
+	private Long Id_Subject;
 }
