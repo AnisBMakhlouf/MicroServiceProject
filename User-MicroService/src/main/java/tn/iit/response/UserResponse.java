@@ -1,32 +1,27 @@
-package tn.iit.entity;
+package tn.iit.response;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import tn.iit.entity.User;
 
-@Entity
-@Table(name = "Users")
-public class User {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
+public class UserResponse {
+
 	private Long id;
 
-	@Column(name = "FullName")
 	private String FullName;
 
-	@Column(name = "Mail")
 	private String Mail;
 	
-	@Column(name = "Password")
 	private String Password;
 	
-	@Column(name = "Role")
 	private String Role;
+	
+	public UserResponse(User user) {
+		this.id =user.getId();
+		this.FullName = user.getFullName();
+		this.Mail = user.getMail();
+		this.Password = user.getPassword();
+		this.Role = user.getRole();
+	}
 
 	public Long getId() {
 		return id;
@@ -67,4 +62,6 @@ public class User {
 	public void setRole(String role) {
 		Role = role;
 	}
+
+
 }
