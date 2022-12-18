@@ -1,4 +1,4 @@
-package java.tn.iit.entity;
+package tn.iit.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
