@@ -1,10 +1,12 @@
 package tn.iit.service;
 
 import java.util.List;
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 //import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import reactor.core.publisher.Mono;
 import tn.iit.entity.User;
@@ -44,10 +46,12 @@ public class UserService {
 		return userResponse;
 	}
 	
-	public List<User> getAll () {
-		List<User> users = userRepository.findAll();
-				
-		return users;
+	public @ResponseBody Iterable<User> getAllUsers() {
+	    return userRepository.findAll();
+	  }
+	
+	public void DeleteUser (long id) {
+		 userRepository.deleteById(id);
 	}
 	
 }
