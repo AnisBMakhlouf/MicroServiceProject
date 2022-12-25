@@ -1,4 +1,4 @@
-package tn.iit.controller;
+package tn.iit.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -7,6 +7,33 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+import tn.iit.entity.Impression;
+import tn.iit.request.CreateImpressionRequest;
+import tn.iit.response.ImpressionResponse;
+import tn.iit.service.ImpressionService;
+
+@RestController
+@RequestMapping("/api/Impression")
 public class ImpressionController {
+	
+	@Autowired
+	ImpressionService impressionService;
+	
+	@PostMapping("/create")
+	public ImpressionResponse createUser (@RequestBody CreateImpressionRequest createImpressionRequest) {
+		return ImpressionService.createImpression(createImpressionRequest);
+	}
+	
+	@GetMapping("getById/{id}")
+	public ImpressionResponse getById (@PathVariable long id) {
+		return ImpressionService.getById(id);
+	}
+	
+	@GetMapping("/all")
+	public List<Impression> getAll (@PathVariable long id) {
+		return ImpressionService.getAll();
+	}
+	
 
 }
