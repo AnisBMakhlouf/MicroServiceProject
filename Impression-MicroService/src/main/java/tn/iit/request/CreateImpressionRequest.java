@@ -1,6 +1,6 @@
 package tn.iit.request;
 
-
+import javax.persistence.Column;
 
 public class CreateImpressionRequest {
 	
@@ -13,8 +13,12 @@ public class CreateImpressionRequest {
 	private String Date;
 	
 	private String File;
-
+	
 	private Long Id_Ens;
+
+	private Long Id_Group;
+	
+	private Long Id_Subject;
 
 	public Long getId() {
 		return id;
@@ -62,6 +66,22 @@ public class CreateImpressionRequest {
 
 	public void setId_Ens(Long id_Ens) {
 		Id_Ens = id_Ens;
+	}
+
+	public Long getId_Group() {
+		return Id_Group;
+	}
+
+	public void setId_Group(Long id_Group) {
+		Id_Group = id_Group;
+	}
+
+	public Long getId_Subject() {
+		return Id_Subject;
+	}
+
+	public void setId_Subject(Long id_Subject) {
+		Id_Subject = id_Subject;
 	}
 	
 	

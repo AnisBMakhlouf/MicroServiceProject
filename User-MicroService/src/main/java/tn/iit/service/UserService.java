@@ -20,11 +20,6 @@ public class UserService {
 	@Autowired
 	UserRepository userRepository;
 
-//	@Autowired
-//	WebClient webClient;
-//	@Autowired
-//	AddressFeignClient feignClient;
-
 	public UserResponse createUser(CreateUserRequest createuserRequest) {
 
 		User user = new User();

@@ -1,10 +1,11 @@
-package tn.iit.Controller;
+package tn.iit.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -22,7 +23,7 @@ public class ImpressionController {
 	
 	@PostMapping("/create")
 	public ImpressionResponse createUser (@RequestBody CreateImpressionRequest createImpressionRequest) {
-		return ImpressionService.createImpression(createImpressionRequest);
+		return impressionService.createImpression(createImpressionRequest);
 	}
 	
 	@GetMapping("getById/{id}")
@@ -31,8 +32,8 @@ public class ImpressionController {
 	}
 	
 	@GetMapping("/all")
-	public List<Impression> getAll (@PathVariable long id) {
-		return ImpressionService.getAll();
+	public @ResponseBody Iterable<Impression> getAll () {
+		return impressionService.getAllImpressions();
 	}
 	
 

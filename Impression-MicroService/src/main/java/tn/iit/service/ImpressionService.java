@@ -1,11 +1,12 @@
 package tn.iit.service;
 
-
-import tn.iit.response.ImpressionResponse;
-
 import java.util.List;
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+//import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import reactor.core.publisher.Mono;
 import tn.iit.entity.Impression;
@@ -13,39 +14,35 @@ import tn.iit.repository.ImpressionRepository;
 import tn.iit.request.CreateImpressionRequest;
 import tn.iit.response.ImpressionResponse;
 
+@Service
 public class ImpressionService {
 	
 	@Autowired
-	static
-	ImpressionRepository ImpressionRepository;
+	ImpressionRepository impressionRepository;
 	
-	public static ImpressionResponse createImpression(CreateImpressionRequest createimpressionRequest) {
+	public ImpressionResponse createImpression(CreateImpressionRequest createimpressionRequest) {
 
 		Impression impression = new Impression();
 		impression.setDate(createimpressionRequest.getDate());
-		impression.setId_Ens(createimpressionRequest.getId_Ens());
-		impression.setNbrCopie(createimpressionRequest.getNbrCopie());
 		impression.setFile(createimpressionRequest.getFile());
+		impression.setId_Ens(createimpressionRequest.getId_Ens());
+		impression.setId_Group(createimpressionRequest.getId_Group());
+		impression.setId_Subject(createimpressionRequest.getId_Subject());
+		impression.setNbrCopie(createimpressionRequest.getNbrCopie());
 		impression.setStatus(createimpressionRequest.getStatus());
 		
-		impression = ImpressionRepository.save(impression);
+		impression = impressionRepository.save(impression);
 
 		ImpressionResponse impressionResponse = new ImpressionResponse(impression);
 		return impressionResponse;
 	}
-	
-	
 
 	public static ImpressionResponse getById(long id) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
-
-
-	public static List<Impression> getAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public @ResponseBody Iterable<Impression> getAllImpressions() {
+	    return impressionRepository.findAll();
+	  }
 
 }

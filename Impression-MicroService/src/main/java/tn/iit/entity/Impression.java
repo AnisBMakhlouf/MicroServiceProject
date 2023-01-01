@@ -32,8 +32,13 @@ public class Impression {
 	
 	@Column(name = "Id_Ens")
 	private Long Id_Ens;
+
+	@Column(name = "Id_Group")
+	private Long Id_Group;
 	
-	
+	@Column(name = "Id_Subject")
+	private Long Id_Subject;
+
 	public Long getId() {
 		return id;
 	}
@@ -97,10 +102,5 @@ public class Impression {
 	public void setId_Subject(Long id_Subject) {
 		Id_Subject = id_Subject;
 	}
-
-	@Column(name = "Id_Group")
-	private Long Id_Group;
 	
-	@Column(name = "Id_Subject")
-	private Long Id_Subject;
 }
