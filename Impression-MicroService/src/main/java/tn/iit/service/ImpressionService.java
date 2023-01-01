@@ -44,5 +44,7 @@ public class ImpressionService {
 	public @ResponseBody Iterable<Impression> getAllImpressions() {
 	    return impressionRepository.findAll();
 	  }
-
+	public void DeleteImpression (long id) {
+		 impressionRepository.deleteById(id);
+	}
 }
