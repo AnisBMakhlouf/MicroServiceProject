@@ -40,7 +40,19 @@ public class UserService {
 	}
 	
 	public UserResponse getById (long id) {
+		//User user = userRepository.findById(id).get();
+		UserResponse userResponse = new UserResponse(userRepository.findById(id).get());
+				
+		return userResponse;
+	}
+	
+	public UserResponse UpdateById (long id,CreateUserRequest createuserRequest) {
 		User user = userRepository.findById(id).get();
+		user.setFullName(createuserRequest.getFullName());
+		user.setMail(createuserRequest.getMail());
+		user.setPassword(createuserRequest.getPassword());
+		user.setRole(createuserRequest.getRole());
+		user = userRepository.save(user);
 		UserResponse userResponse = new UserResponse(userRepository.findById(id).get());
 				
 		return userResponse;

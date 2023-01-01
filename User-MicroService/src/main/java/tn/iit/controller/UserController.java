@@ -41,6 +41,11 @@ public class UserController {
 	    return userService.getAllUsers();
 	  }
 	 
+	 @PostMapping("/update/{id}")
+		public UserResponse updateUser (@PathVariable long id,@RequestBody CreateUserRequest createUserRequest) {
+			return userService.UpdateById(id, createUserRequest);
+		}
+	 
 	 @PostMapping("/delete/{id}")
 		public void deleteUser (@PathVariable long id) {
 			userService.DeleteUser(id);
