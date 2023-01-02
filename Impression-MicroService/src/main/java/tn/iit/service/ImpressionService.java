@@ -36,9 +36,26 @@ public class ImpressionService {
 		ImpressionResponse impressionResponse = new ImpressionResponse(impression);
 		return impressionResponse;
 	}
+	
+	public ImpressionResponse UpdateImpression(long id, CreateImpressionRequest createimpressionRequest) {
 
-	public static ImpressionResponse getById(long id) {
-		return null;
+		Impression imp = impressionRepository.findById(id).get();
+		imp.setDate(createimpressionRequest.getDate());
+		imp.setFile(createimpressionRequest.getFile());
+		imp.setId_Ens(createimpressionRequest.getId_Ens());
+		imp.setId_Group(createimpressionRequest.getId_Group());
+		imp.setId_Subject(createimpressionRequest.getId_Subject());
+		imp.setNbrCopie(createimpressionRequest.getNbrCopie());
+		imp.setStatus(createimpressionRequest.getStatus());
+		
+		imp = impressionRepository.save(imp);
+		ImpressionResponse impressionResponse = new ImpressionResponse(imp);
+		return impressionResponse;
+	}
+
+	public ImpressionResponse getById(long id) {
+		ImpressionResponse impressionResponse = new ImpressionResponse(impressionRepository.findById(id).get());
+		return impressionResponse;
 	}
 
 	public @ResponseBody Iterable<Impression> getAllImpressions() {

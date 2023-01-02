@@ -1,4 +1,4 @@
-package tn.iit.Controller;
+package tn.iit.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,12 +28,22 @@ public class ImpressionController {
 	
 	@GetMapping("getById/{id}")
 	public ImpressionResponse getById (@PathVariable long id) {
-		return ImpressionService.getById(id);
+		return impressionService.getById(id);
+	}
+	
+	@PostMapping("/update/{id}")
+		public ImpressionResponse updateUser (@PathVariable long id,@RequestBody CreateImpressionRequest createImpressionRequest) {
+			return impressionService.UpdateImpression(id, createImpressionRequest);
 	}
 	
 	@GetMapping("/all")
 	public @ResponseBody Iterable<Impression> getAll () {
 		return impressionService.getAllImpressions();
+	}
+	
+	@PostMapping("/delete/{id}")
+		public void deleteImpression (@PathVariable long id) {
+		impressionService.DeleteImpression(id);
 	}
 	
 

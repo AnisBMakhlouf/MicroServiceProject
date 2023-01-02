@@ -56,6 +56,8 @@ public class SubjectService {
 	    return subjectRepository.findAll();
 	  }
 	
+	
+	
 	public void DeleteSubject (long id) {
 		subjectRepository.deleteById(id);
 	}

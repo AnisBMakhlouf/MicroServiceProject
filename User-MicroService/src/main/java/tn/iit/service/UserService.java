@@ -41,12 +41,12 @@ public class UserService {
 		return userResponse;
 	}
 	
-	public UserResponse UpdateById (long id,CreateUserRequest createuserRequest) {
+	public UserResponse UpdateById (long id,CreateUserRequest createImpressionRequest) {
 		User user = userRepository.findById(id).get();
-		user.setFullName(createuserRequest.getFullName());
-		user.setMail(createuserRequest.getMail());
-		user.setPassword(createuserRequest.getPassword());
-		user.setRole(createuserRequest.getRole());
+		user.setFullName(createImpressionRequest.getFullName());
+		user.setMail(createImpressionRequest.getMail());
+		user.setPassword(createImpressionRequest.getPassword());
+		user.setRole(createImpressionRequest.getRole());
 		user = userRepository.save(user);
 		UserResponse userResponse = new UserResponse(userRepository.findById(id).get());
 				
