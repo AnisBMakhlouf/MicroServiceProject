@@ -1,24 +1,24 @@
 package tn.iit.service;
 
-import java.util.List;
-import java.util.ArrayList;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-//import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import reactor.core.publisher.Mono;
 import tn.iit.entity.Subject;
 import tn.iit.repository.SubjectRepository;
 import tn.iit.request.CreateSubjectRequest;
 import tn.iit.response.SubjectResponse;
+
+import tn.iit.proxies.GroupFeignClient;
+import tn.iit.response.GroupResponse;
 
 @Service
 public class SubjectService {
 
 	@Autowired
 	SubjectRepository subjectRepository;
+	@Autowired
+	GroupFeignClient feignClient;
 
 	public SubjectResponse createSubject(CreateSubjectRequest createsubjectRequest) {
 
@@ -34,10 +34,15 @@ public class SubjectService {
 	}
 	
 	public SubjectResponse getById (long id) {
-		//User user = userRepository.findById(id).get();
+		Subject subject = subjectRepository.findById(id).get();
+		GroupResponse groupResponse = getGroupById(subject.getId_Group());
 		SubjectResponse subjectResponse = new SubjectResponse(subjectRepository.findById(id).get());
+		subjectResponse.setNom_Group(groupResponse.getGroupName());
 				
 		return subjectResponse;
+	}
+	private GroupResponse getGroupById(String id) {
+		return feignClient.getById(id);
 	}
 	
 	public SubjectResponse UpdateById (long id,CreateSubjectRequest createsubjectRequest) {

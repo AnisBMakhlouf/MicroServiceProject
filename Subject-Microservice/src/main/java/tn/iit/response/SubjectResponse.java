@@ -12,13 +12,32 @@ public class SubjectResponse {
 	
 	private String Id_Ens;
 	
+	private String Nom_Ens;
+	
+	private String Nom_Group;
+
 	public SubjectResponse(Subject subject) {
 		this.id =subject.getId();
 		this.SubjectName = subject.getSubjectName();
 		this.Id_Group = subject.getId_Group();
 		this.Id_Ens = subject.getId_Ens();
 	}
+	
+	public String getNom_Group() {
+		return Nom_Group;
+	}
 
+	public void setNom_Group(String nom_Group) {
+		Nom_Group = nom_Group;
+	}
+
+	public String getNom_Ens() {
+		return Nom_Ens;
+	}
+
+	public void setNom_Ens(String nom_Ens) {
+		Nom_Ens = nom_Ens;
+	}
 	public Long getId() {
 		return id;
 	}
