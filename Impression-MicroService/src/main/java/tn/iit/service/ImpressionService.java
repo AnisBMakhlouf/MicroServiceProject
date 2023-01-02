@@ -9,17 +9,26 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import reactor.core.publisher.Mono;
+import tn.iit.Proxies.GroupFeignClient;
+import tn.iit.Proxies.SubjectFeignClient;
+import tn.iit.Proxies.UserFeignClient;
 import tn.iit.entity.Impression;
 import tn.iit.repository.ImpressionRepository;
 import tn.iit.request.CreateImpressionRequest;
+import tn.iit.response.GroupResponse;
 import tn.iit.response.ImpressionResponse;
+import tn.iit.response.SubjectResponse;
+import tn.iit.response.UserResponse;
 
 @Service
 public class ImpressionService {
 	
 	@Autowired
 	ImpressionRepository impressionRepository;
-	
+	@Autowired
+	GroupFeignClient GfeignClient;
+	SubjectFeignClient SfeignClient;
+	UserFeignClient UfeignClient;
 	public ImpressionResponse createImpression(CreateImpressionRequest createimpressionRequest) {
 
 		Impression impression = new Impression();
@@ -54,10 +63,29 @@ public class ImpressionService {
 	}
 
 	public ImpressionResponse getById(long id) {
+		Impression impression = impressionRepository.findById(id).get();
+		GroupResponse groupResponse = getGroupById(impression.getId_Group());
+		UserResponse userResponse = getUserById(impression.getId_Ens());
+		SubjectResponse subjectResponse = getSubjectById(impression.getId_Subject());
+
 		ImpressionResponse impressionResponse = new ImpressionResponse(impressionRepository.findById(id).get());
+		
 		return impressionResponse;
 	}
 
+	private SubjectResponse getSubjectById(Long Id_Subject) {
+		// TODO Auto-generated method stub
+		return SfeignClient.getById(Id_Subject);
+	}
+
+	private UserResponse getUserById(Long id_Ens) {
+		// TODO Auto-generated method stub
+		return UfeignClient.getById(id_Ens);
+	}
+
+	private GroupResponse getGroupById(long Id_Group) {
+		return GfeignClient.getById(Id_Group);
+	}
 	public @ResponseBody Iterable<Impression> getAllImpressions() {
 	    return impressionRepository.findAll();
 	  }
