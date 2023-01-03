@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import tn.iit.request.CreateUserRequest;
 import tn.iit.response.UserResponse;
 
-@FeignClient(value = "User-Microservice", path = "/api/user")
+@FeignClient(value = "UserService", path = "/api/user")
 public interface UserFeignClient {
 	@PostMapping("/create")
 	UserResponse createAddress(@RequestBody CreateUserRequest createStudentRequest);

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import tn.iit.request.CreateSubjectRequest;
 import tn.iit.response.SubjectResponse;
 
-@FeignClient(value = "Subject-Microservice", path = "/api/subject")
+@FeignClient(value = "SubjectService", path = "/api/subject")
 public interface SubjectFeignClient {
 
 	@PostMapping("/create")

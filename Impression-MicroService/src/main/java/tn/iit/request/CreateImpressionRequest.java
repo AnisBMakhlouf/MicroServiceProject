@@ -16,7 +16,7 @@ public class CreateImpressionRequest {
 	
 	private Long Id_Ens;
 
-	private Long Id_Group;
+	private String Id_Group;
 	
 	private Long Id_Subject;
 
@@ -68,11 +68,11 @@ public class CreateImpressionRequest {
 		Id_Ens = id_Ens;
 	}
 
-	public Long getId_Group() {
+	public String getId_Group() {
 		return Id_Group;
 	}
 
-	public void setId_Group(Long id_Group) {
+	public void setId_Group(String id_Group) {
 		Id_Group = id_Group;
 	}
 

@@ -8,11 +8,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import tn.iit.request.CreateGroupRequest;
 import tn.iit.response.GroupResponse;
-@FeignClient(value = "GroupService", path = "/api/Group")
+
+@FeignClient(value = "GroupService", path = "/api/group")
 public interface GroupFeignClient {
 	@PostMapping("/create")
-	GroupResponse createAddress(@RequestBody CreateGroupRequest createGroupRequest);
+	GroupResponse createGroup(@RequestBody CreateGroupRequest createGroupRequest);
 
-	@GetMapping("getById/{id}")
-	GroupResponse getById(@PathVariable long id);
+	@GetMapping("/getById/{id}")
+	GroupResponse getById(@PathVariable String id);
 }

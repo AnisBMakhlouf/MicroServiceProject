@@ -83,11 +83,10 @@ public class ImpressionService {
 	}
 
 	private UserResponse getUserById(long id_Ens) {
-		// TODO Auto-generated method stub
 		return UfeignClient.getById(id_Ens);
 	}
 
-	private GroupResponse getGroupById(long Id_Group) {
+	private GroupResponse getGroupById(String Id_Group) {
 		return GfeignClient.getById(Id_Group);
 	}
 	public @ResponseBody Iterable<Impression> getAllImpressions() {

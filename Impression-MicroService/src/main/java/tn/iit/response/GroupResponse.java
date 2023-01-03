@@ -2,7 +2,6 @@ package tn.iit.response;
 
 
 
-
 public class GroupResponse {
 
 	private Long id;
@@ -10,14 +9,6 @@ public class GroupResponse {
 	private String GroupName;
 	
 	private Long StudentNB;
-	
-	
-	public GroupResponse(Long id, String groupName, Long studentNB) {
-		super();
-		this.id = id;
-		GroupName = groupName;
-		StudentNB = studentNB;
-	}
 
 	public Long getId() {
 		return id;
@@ -41,11 +32,6 @@ public class GroupResponse {
 
 	public void setStudentNB(Long studentNB) {
 		StudentNB = studentNB;
-	}
-
-	public GroupResponse() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 
 
