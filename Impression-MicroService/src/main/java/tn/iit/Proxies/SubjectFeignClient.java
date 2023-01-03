@@ -14,7 +14,7 @@ public interface SubjectFeignClient {
 
 	@PostMapping("/create")
 	SubjectResponse createAddress(@RequestBody CreateSubjectRequest createSubjectRequest);
-
+	
 	@GetMapping("getById/{id}")
 	SubjectResponse getById(@PathVariable long id);
 
