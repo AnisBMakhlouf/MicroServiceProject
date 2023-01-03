@@ -21,8 +21,11 @@ public class ImpressionResponse {
 
 	private Long Id_Ens;
 	private Long Id_Group;
-	
 	private Long Id_Subject;
+	
+	private String Nom_Ens;
+	private String Nom_Group;
+	private String Nom_Subject;
 	public ImpressionResponse(Impression impression) {
 	
 		this.id = impression.getId();
@@ -34,6 +37,24 @@ public class ImpressionResponse {
 		this.Id_Group = impression.getId_Group();
 		this.Id_Subject= impression.getId_Subject();
 		
+	}
+	public String getNom_Group() {
+		return Nom_Group;
+	}
+	public void setNom_Group(String nom_Group) {
+		Nom_Group = nom_Group;
+	}
+	public String getNom_Subject() {
+		return Nom_Subject;
+	}
+	public void setNom_Subject(String nom_Subject) {
+		Nom_Subject = nom_Subject;
+	}
+	public String getNom_Ens() {
+		return Nom_Ens;
+	}
+	public void setNom_Ens(String nom_Ens) {
+		Nom_Ens = nom_Ens;
 	}
 	public Long getId_Group() {
 		return Id_Group;

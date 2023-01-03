@@ -27,7 +27,9 @@ public class ImpressionService {
 	ImpressionRepository impressionRepository;
 	@Autowired
 	GroupFeignClient GfeignClient;
+	@Autowired
 	SubjectFeignClient SfeignClient;
+	@Autowired
 	UserFeignClient UfeignClient;
 	public ImpressionResponse createImpression(CreateImpressionRequest createimpressionRequest) {
 
@@ -67,18 +69,20 @@ public class ImpressionService {
 		GroupResponse groupResponse = getGroupById(impression.getId_Group());
 		UserResponse userResponse = getUserById(impression.getId_Ens());
 		SubjectResponse subjectResponse = getSubjectById(impression.getId_Subject());
-
-		ImpressionResponse impressionResponse = new ImpressionResponse(impressionRepository.findById(id).get());
 		
+		ImpressionResponse impressionResponse = new ImpressionResponse(impressionRepository.findById(id).get());
+		impressionResponse.setNom_Ens(userResponse.getFullName());
+		impressionResponse.setNom_Group(groupResponse.getGroupName());
+		impressionResponse.setNom_Subject(subjectResponse.getSubjectName());
 		return impressionResponse;
 	}
 
-	private SubjectResponse getSubjectById(Long Id_Subject) {
+	private SubjectResponse getSubjectById(long Id_Subject) {
 		// TODO Auto-generated method stub
 		return SfeignClient.getById(Id_Subject);
 	}
 
-	private UserResponse getUserById(Long id_Ens) {
+	private UserResponse getUserById(long id_Ens) {
 		// TODO Auto-generated method stub
 		return UfeignClient.getById(id_Ens);
 	}

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import tn.iit.request.CreateGroupRequest;
 import tn.iit.response.GroupResponse;
-@FeignClient(value = "Group-Microservice", path = "/api/Group")
+@FeignClient(value = "GroupService", path = "/api/Group")
 public interface GroupFeignClient {
 	@PostMapping("/create")
 	GroupResponse createAddress(@RequestBody CreateGroupRequest createGroupRequest);
