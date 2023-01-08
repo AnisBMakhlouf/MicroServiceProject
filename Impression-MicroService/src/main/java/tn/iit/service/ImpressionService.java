@@ -64,7 +64,7 @@ public class ImpressionService {
 		return impressionResponse;
 	}
 	
-	public ImpressionResponse getById(long id) {
+	public @ResponseBody ImpressionResponse getById(long id) {
 		Impression impression = impressionRepository.findById(id).get();
 		GroupResponse groupResponse = getGroupById(impression.getId_Group());
 		UserResponse userResponse = getUserById(impression.getId_Ens());
