@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 @Entity
@@ -29,6 +30,10 @@ public class Impression {
 	
 	@Column(name = "File")
 	private String File;
+	
+	@Lob
+	@Column(name = "FileContent")
+	private byte[] FileContent;
 	
 	@Column(name = "Id_Ens")
 	private Long Id_Ens;
